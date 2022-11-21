@@ -1,0 +1,25 @@
+<section style="margin: 100px">
+    <div *ngIf="clientes.length == 0" class="alert alert-dark" role="alert">Não temos informações para exibir</div>
+    <table class="table">
+    <table *ngIf="clientes.length > 0" class="table">
+        <thead>
+            <tr class="table-warning">
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of clientes" class="table-warning">
+                <td>{{cliente.id}}</td>
+                <td>{{cliente.nome}}</td>
+                <td>{{cliente.cpf | formataCpf}}</td>
+                <td>{{cliente.telefone | formataTelefones}}</td>
+                <td>{{cliente.data | date: 'dd/MM/yyyy'}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </table>
+</section>

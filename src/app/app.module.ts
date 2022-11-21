@@ -1,22 +1,39 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TabelasComponent } from './pages/tabelas/tabelas.component';
 import { HomeComponent } from './pages/home/home.component';
+import { FormularioComponent } from './pages/formulario/formulario.component';
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+import { TabelaCPFComponent } from './pages/tabela-cpf/tabela-cpf.component';
+import { FormsModule } from '@angular/forms';
+import { FormataTelefonesPipe } from './pipes/formata-telefones.pipe';
+import { FormataCpfPipe } from './pipes/formata-cpf.pipe';
+
+
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
     AppComponent,
     TabelasComponent,
     HomeComponent,
+    FormularioComponent,
+    TabelaCPFComponent,
+    FormataTelefonesPipe,
+    FormataCpfPipe,
   ],
   imports: [
     BrowserModule, 
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'pt'},
+    {provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL',}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

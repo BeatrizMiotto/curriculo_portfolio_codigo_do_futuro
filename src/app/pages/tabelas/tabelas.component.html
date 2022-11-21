@@ -1,29 +1,22 @@
 <br><br><br>
 <div *ngIf="musicas.length == 0">Não há produtos</div>
-<div class="card-body">
-    <div class="card mb-4">
-    <div class="card-header">
-    <i class="fas fa-table me-1"></i>
-    DataTable Example
-</div>
-        <table *ngIf="musicas.length > 0" id="datatablesSimple" >
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Album</th>
-                    <th>Banda</th>
-                    <th>Ano</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let musica of musicas">
-                    <td>{{musica.id}}</td>
-                    <td>{{musica.album}}</td>
-                    <td>{{musica.banda}}</td>
-                    <td>{{musica.ano}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+<table *ngIf="musicas.length > 0" class="table" >
+    <thead>
+        <tr class="table-dark">
+            <th>ID</th>
+            <th>Album</th>
+            <th>Banda</th>
+            <th>Ano</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let musica of musicas" class="table-danger">
+            <td>{{musica.id}}</td>
+            <td>{{musica.album}}</td>
+            <td>{{musica.banda}}</td>
+            <td>{{musica.ano}}</td>
+        </tr>
+    </tbody>
+</table>
+
 

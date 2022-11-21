@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Musicas } from 'src/app/models/musicas';
 
 @Component({
   selector: 'app-tabelas',
@@ -9,7 +10,7 @@ export class TabelasComponent implements OnInit {
 
   constructor() { }
 
-  public musicas: any[] =[]
+  public musicas: Musicas[] =[]
 
   ngOnInit(): void {
     this.musicas.push(

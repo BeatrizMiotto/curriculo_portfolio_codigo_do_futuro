@@ -1,0 +1,82 @@
+<br><br><br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div>
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light  my-4">Produtos</h3></div>
+                <div class="card-body">
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input [(ngModel)] ="produto.nome" name="nome" class="form-control" id="nomeproduto" type="text" placeholder="Nome" />
+                                <label for="nomeproduto">Nome</label>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input [(ngModel)]="produto.descricao" name="descricao" class="form-control" id="descriproduto" type="text" placeholder="Descrição" />
+                            <label for="descriproduto">Descrição</label>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    <input [(ngModel)]="produto.preco" name="preco" class="form-control" id="precoproduto" type="number" placeholder="Preço" />
+                                    <label for="precoproduto">Preço</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button type="submit" class="btn btn-primary" (click)="incluir()">Adicionar Produto</button>
+                            <button type="submit" class="btn btn-success" >Alterar Produto</button>
+                            <button type="submit" class="btn btn-warning" >Limpar</button>
+                            <button type="submit" class="btn btn-danger" (click)="delete()" >Deletar Produto</button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<hr>
+<section>
+    <div *ngIf="produtos.length == 0" class="alert alert-dark" role="alert">Não temos informações para exibir</div>
+    
+    <table *ngIf="produtos.length > 0" class="table">
+        <thead>
+            <tr class="table-dark">
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let produto of produtos" class="table-secondary">
+                <td>{{produto.id}}</td>
+                <td>{{produto.nome}}</td>
+                <td>{{produto.descricao}}</td>
+                <td>{{produto.preco.toString() | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br>
+<br><br><br>
