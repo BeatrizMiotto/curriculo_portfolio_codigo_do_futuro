@@ -11,6 +11,8 @@ import { TabelaCPFComponent } from './pages/tabela-cpf/tabela-cpf.component';
 import { FormsModule } from '@angular/forms';
 import { FormataTelefonesPipe } from './pipes/formata-telefones.pipe';
 import { FormataCpfPipe } from './pipes/formata-cpf.pipe';
+import { ListaComponent } from './pages/lista/lista.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 registerLocaleData(ptBr);
@@ -24,6 +26,8 @@ registerLocaleData(ptBr);
     TabelaCPFComponent,
     FormataTelefonesPipe,
     FormataCpfPipe,
+    ListaComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule, 

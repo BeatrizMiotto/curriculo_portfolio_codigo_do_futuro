@@ -43,8 +43,20 @@ export class FormularioComponent implements OnInit {
   }
   delete(){
     
+    
 
 
+  }
+  altera(id: Number){
+    for(let alteraProduto of this.produtos){
+      if(alteraProduto.id === id){
+        this.produto.nome = alteraProduto.nome
+        this.produto.descricao = alteraProduto.descricao
+        this.produto.preco = alteraProduto.preco
+        break
+      }
+      
+    }
   }
 
 }
