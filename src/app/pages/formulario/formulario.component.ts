@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Produtos } from 'src/app/models/produtos';
+import { ProdutoService } from 'src/app/service/produtos.service';
 
 @Component({
   selector: 'app-formulario',
@@ -8,38 +10,33 @@ import { Produtos } from 'src/app/models/produtos';
 })
 export class FormularioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,
+    private routerParams: ActivatedRoute){ }
 
   public produto:Produtos = {} as Produtos
 
-  public produtos: Produtos[] =[
-    {
-      id: 1,
-      nome: 'Batata',
-      descricao:'Batata lavada',
-      preco: 7.60
-    },
-    {
-      id: 2,
-      nome: 'Pão',
-      descricao:'Pão de forma',
-      preco: 6.50
-    }
-  ]
+  
 
   ngOnInit(): void {
-    //this.produto = this.produtos[0]
+    let id:Number = this.routerParams.snapshot.params['id']
+    if(id){
+      this.produto = ProdutoService.buscaProdutosPorId(id)
+    }
   }
-  incluir(){
-  let id = this.produtos.length + 1
-  let novoProduto: Produtos ={
-    id: id,
-    nome: this.produto.nome,
-    descricao: this.produto.descricao,
-    preco: this.produto.preco
-
-  } as Produtos 
-  this.produtos.push(novoProduto)
+  adicionaProduto(){
+    if(this.produto.id > 0){
+     ProdutoService.alteraProduto(this.produto)
+    }else{
+      let novoProduto: Produtos = {
+        id: 0,
+        nome: this.produto.nome,
+        descricao: this.produto.descricao, 
+        preco: this.produto.preco
+      } as Produtos
+      ProdutoService.adicionaProduto(novoProduto)
+      this.router.navigateByUrl("/lista")
+    }
+    
   }
   delete(){
     
@@ -47,16 +44,7 @@ export class FormularioComponent implements OnInit {
 
 
   }
-  altera(id: Number){
-    for(let alteraProduto of this.produtos){
-      if(alteraProduto.id === id){
-        this.produto.nome = alteraProduto.nome
-        this.produto.descricao = alteraProduto.descricao
-        this.produto.preco = alteraProduto.preco
-        break
-      }
-      
-    }
+  
   }
 
-}
+

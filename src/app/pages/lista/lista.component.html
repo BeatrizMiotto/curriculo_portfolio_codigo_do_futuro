@@ -1,1 +1,38 @@
-<p>lista works!</p>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+
+
+<section>
+    <div *ngIf="produtos.length == 0" class="alert alert-dark" role="alert">Não temos informações para exibir</div>
+    
+    <table *ngIf="produtos.length > 0" class="table">
+        <thead>
+            <tr class="table-dark">
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th colspan="2">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let produto of produtos" class="table-secondary">
+                <td>{{produto.id}}</td>
+                <td>{{produto.nome}}</td>
+                <td>{{produto.descricao}}</td>
+                <td>{{produto.preco.toString() | currency}}</td>
+                <td><a class="btn btn-primary" routerLink="/formu_alterar/{{produto.id}}">Alterar</a></td>
+                <td><button class="btn btn-danger" (click)="deletar(produto)">Deletar</button></td>
+            </tr>
+        </tbody>
+    </table>
+    
+</section>
+<section>
+    <button type="submit" class="btn btn-primary" (click)="add()">Adicionar Produto</button>
+</section>
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
